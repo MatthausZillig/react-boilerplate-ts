@@ -47,5 +47,8 @@
       "src/**/*.{ts,tsx,js,jsx}",
       "!src/**/*.d.ts"
     ]
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }
