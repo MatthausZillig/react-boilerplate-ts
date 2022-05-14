@@ -14,12 +14,8 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
     "lint:fix": "yarn lint --fix",
     "prepare": "husky install",
-    "postinstall": "husky install"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "postinstall": "husky install",
+    "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "src/**/*": [
