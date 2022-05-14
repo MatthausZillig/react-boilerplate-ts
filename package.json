@@ -7,9 +7,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "jest",
+    "test:staged": "jest src/**/*.tsx --findRelatedTests",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "test:staged": "jest --bail --findRelatedTests",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
@@ -24,9 +24,10 @@
     }
   },
   "lint-staged": {
-    "src/**/*": [
+    "src/**/*.tsx": [
       "yarn format",
-      "yarn lint:fix"
+      "yarn lint:fix",
+      "yarn test:staged"
     ]
   },
   "dependencies": {
@@ -68,14 +69,6 @@
     "testPathIgnorePatterns": [
       "/node_modules/"
     ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 40,
-        "functions": 40,
-        "lines": 40,
-        "statements": 40
-      }
-    },
     "collectCoverage": true,
     "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
