@@ -9,6 +9,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll",
+    "test:staged": "jest --bail --findRelatedTests",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
@@ -21,7 +22,7 @@
     "src/**/*": [
       "yarn format",
       "yarn lint:fix",
-      "yarn test --passWithNoTests"
+      "yarn test:staged"
     ]
   },
   "dependencies": {
@@ -63,6 +64,14 @@
     "testPathIgnorePatterns": [
       "/node_modules/"
     ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 40,
+        "functions": 40,
+        "lines": 40,
+        "statements": 40
+      }
+    },
     "collectCoverage": true,
     "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
@@ -71,7 +80,8 @@
     "collectCoverageFrom": [
       "src/**/*.ts(x)?",
       "!src/**/*.d.ts"
-    ]
+    ],
+    "testMatch": ["<rootdir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}', '<rootdir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"]
   },
   "resolutions": {
     "styled-components": "^5"
